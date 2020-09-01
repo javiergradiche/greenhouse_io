@@ -28,6 +28,14 @@ module GreenhouseIo
       get_from_harvest_api "/candidates#{path_id(id)}", options
     end
 
+    def create_candidate(hash, on_behalf_of)
+      post_to_harvest_api(
+        '/candidates',
+        hash,
+        { 'On-Behalf-Of' => on_behalf_of.to_s }
+      )
+    end
+    
     def activity_feed(id, options = {})
       get_from_harvest_api "/candidates/#{id}/activity_feed", options
     end
