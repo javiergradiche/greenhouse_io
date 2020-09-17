@@ -36,6 +36,14 @@ module GreenhouseIo
       )
     end
     
+    def create_prospect(hash, on_behalf_of)
+      post_to_harvest_api(
+        'https://api.greenhouse.io/v1/partner/candidates',
+        hash,
+        { 'On-Behalf-Of' => on_behalf_of.to_s }
+      )
+    end
+
     def activity_feed(id, options = {})
       get_from_harvest_api "/candidates/#{id}/activity_feed", options
     end
